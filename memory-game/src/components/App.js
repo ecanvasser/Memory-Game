@@ -6,13 +6,29 @@ import Main from "./Main";
 function App() {
   const [scores, setScores] = useState({ current: 0, best: 0 });
   const [watches, setWatches] = useState({
-    datejust: { name: "Datejust", img: "", clicked: false },
+    Datejust: { name: "Datejust", img: "", clicked: false },
+    Oyster: { name: "Oyster", img: "", clicked: false },
   });
+
+  const handleMove = (e) => {
+    let watch = watches[e.target.name];
+
+    if (watch.clicked === false) {
+      setWatches(prevWatches => ({
+        ...prevWatches, [e.target.name]: {
+          ...prevWatches[e.target.name], clicked: true
+        }
+      }))
+      setScores(prevScores => ({
+        ...prevScores, current: scores.current + 1
+      }))
+    }
+  };
 
   return (
     <div className="App">
       <Header scores={scores} />
-      <Main watches={watches} />
+      <Main watches={watches} handleMove={handleMove} />
     </div>
   );
 }

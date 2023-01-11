@@ -1,4 +1,7 @@
 main {
     background-color: black;
     padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(max-content, 250px));
+    gap: 2.5rem;
 }
