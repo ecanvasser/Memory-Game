@@ -5,13 +5,14 @@ import Main from "./Main";
 
 function App() {
   const [scores, setScores] = useState({ current: 0, best: 0 });
+  const [watches, setWatches] = useState({
+    datejust: { name: "Datejust", img: "", clicked: false },
+  });
 
   return (
     <div className="App">
-      <Header 
-      scores={scores}
-      />
-      <Main />
+      <Header scores={scores} />
+      <Main watches={watches} />
     </div>
   );
 }
