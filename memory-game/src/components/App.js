@@ -14,14 +14,17 @@ function App() {
     let watch = watches[e.target.name];
 
     if (watch.clicked === false) {
-      setWatches(prevWatches => ({
-        ...prevWatches, [e.target.name]: {
-          ...prevWatches[e.target.name], clicked: true
-        }
-      }))
-      setScores(prevScores => ({
-        ...prevScores, current: scores.current + 1
-      }))
+      setWatches((prevWatches) => ({
+        ...prevWatches,
+        [e.target.name]: {
+          ...prevWatches[e.target.name],
+          clicked: true,
+        },
+      }));
+      setScores((prevScores) => ({
+        ...prevScores,
+        current: scores.current + 1, best: scores.best + 1
+      }));
     }
   };
 
