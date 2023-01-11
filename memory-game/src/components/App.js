@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useLayoutEffect, useState } from "react";
 import "../styles/App.css";
 import Header from "./Header";
 import Main from "./Main";
@@ -9,6 +9,18 @@ function App() {
     Datejust: { name: "Datejust", img: "", clicked: false },
     Oyster: { name: "Oyster", img: "", clicked: false },
   });
+  const firstUpdate = useRef(true);
+
+  useLayoutEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+    setScores((prevScores) => ({
+      ...prevScores,
+      current: scores.current++, best: scores.best++
+    }));
+  }, [...Object.values(watches).map(obj => obj.clicked)]);
 
   const handleMove = (e) => {
     let watch = watches[e.target.name];
@@ -20,10 +32,6 @@ function App() {
           ...prevWatches[e.target.name],
           clicked: true,
         },
-      }));
-      setScores((prevScores) => ({
-        ...prevScores,
-        current: scores.current + 1, best: scores.best + 1
       }));
     }
   };
