@@ -5,7 +5,7 @@ const Main = (props) => {
   return (
   <main>
     {Object.values(props.watches).map((obj) => {
-      return <Card watches={obj} handleMove={props.handleMove} name={obj.name}/>
+      return <Card watches={obj} handleMove={props.handleMove} name={obj.name} src={obj.img}/>
     })}
   </main>
   );

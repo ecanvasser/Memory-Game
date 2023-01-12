@@ -3,6 +3,6 @@ main {
     padding: 2rem;
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, minmax(max-content, 250px));
+    grid-template-columns: repeat(auto-fit, minmax(260px, max-content));
     gap: 2.5rem;
 }
