@@ -10,6 +10,7 @@ function App() {
     Datejust: { name: "Datejust", img: "", clicked: false },
     Oyster: { name: "Oyster", img: "", clicked: false },
   });
+  const [baseState, setBaseState] = useState(watches);
   const firstUpdate = useRef(true);
 
   // Handles scoring increase and best score
@@ -21,8 +22,8 @@ function App() {
     if (watches[target].clicked === true) {
       setScores((prevScores) => ({
         ...prevScores,
-        current: scores.current++,
-        best: scores.best > scores.current ? scores.best : scores.current - 1
+        current: prevScores.current + 1,
+        best: scores.best > scores.current ? scores.best : prevScores.current + 1
       }));
     }
   }, [...Object.values(watches).map((obj) => obj.clicked)]);
@@ -38,6 +39,7 @@ function App() {
         ...prevScores,
         current: 0,
       }));
+      setWatches(baseState)
     }
   }, [...Object.values(watches).map((obj) => obj.clicked)]);
 
