@@ -4,6 +4,7 @@ import Header from "./Header";
 import Main from "./Main";
 
 function App() {
+  const [target, setTarget] = useState("Oyster");
   const [scores, setScores] = useState({ current: 0, best: 0 });
   const [watches, setWatches] = useState({
     Datejust: { name: "Datejust", img: "", clicked: false },
@@ -11,20 +12,38 @@ function App() {
   });
   const firstUpdate = useRef(true);
 
+  // Handles scoring increase and best score
   useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
       return;
     }
-    setScores((prevScores) => ({
-      ...prevScores,
-      current: scores.current++,
-      best: scores.best++,
-    }));
+    if (watches[target].clicked === true) {
+      setScores((prevScores) => ({
+        ...prevScores,
+        current: scores.current++,
+        best: scores.best > scores.current ? scores.best : scores.current - 1
+      }));
+    }
+  }, [...Object.values(watches).map((obj) => obj.clicked)]);
+
+  // Resets current score when card is selected twice
+  useEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return;
+    }
+    if (watches[target].clicked === false) {
+      setScores((prevScores) => ({
+        ...prevScores,
+        current: 0,
+      }));
+    }
   }, [...Object.values(watches).map((obj) => obj.clicked)]);
 
   const handleMove = (e) => {
     let watch = watches[e.target.name];
+    setTarget(e.target.name);
 
     if (watch.clicked === false) {
       setWatches((prevWatches) => ({
@@ -32,6 +51,14 @@ function App() {
         [e.target.name]: {
           ...prevWatches[e.target.name],
           clicked: true,
+        },
+      }));
+    } else if (watch.clicked === true) {
+      setWatches((prevWatches) => ({
+        ...prevWatches,
+        [e.target.name]: {
+          ...prevWatches[e.target.name],
+          clicked: false,
         },
       }));
     }
