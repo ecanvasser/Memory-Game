@@ -2,10 +2,10 @@ import "../styles/Card.css";
 
 const Card = (props) => {
   return (
-    <button className="card-container" onClick={props.handleMove} name={props.name}>
-      <div className="card-img"></div>
+    <div className="card-container">
+      <img className="card-img" alt="" onClick={props.handleMove} name={props.name}></img>
       <div className="card-name">{props.watches.name}</div>
-    </button>
+    </div>
   );
 };
 
