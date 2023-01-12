@@ -1,12 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif');
+@import url('https://fonts.googleapis.com/css?family=Lexend+Mega');
+
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1rem 2rem;
+}
+
+#header-title {
+    font-family: 'IBM Plex Serif';
+    font-weight: 600;
+    font-size: 25px;
 }
 
 #header-scores {
-    display: flex;
-    gap: 2rem
+  display: flex;
+  gap: 2rem;
+  font-family: 'Lexend Mega';
 }

@@ -1,17 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Lexend+Mega:wght@100");
+
 .card-container {
-    background-color: white;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-    width: max-content;
-    height: max-content;
-    border: none;
+  background-color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: max-content;
+  height: max-content;
+  border: none;
+  transition: 1s;
+  border-radius: 10px;
+  font-family: "Lexend Mega";
+}
+
+.card-container:hover {
+  transform: scale(1.04);
 }
 
 .card-img {
-    height: 250px;
-    width: 250px;
-    background-color: gray;
+  height: 250px;
+  width: 250px;
+  background-color: gray;
+  transition: 1s;
+  border-radius: 10px;
+}
+
+.card-img:hover {
+  transform: scale(1.03);
 }
