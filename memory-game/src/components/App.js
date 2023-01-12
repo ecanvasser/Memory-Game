@@ -4,11 +4,23 @@ import Header from "./Header";
 import Main from "./Main";
 
 function App() {
-  const [target, setTarget] = useState("Oyster");
+  const [target, setTarget] = useState("Explorer");
   const [scores, setScores] = useState({ current: 0, best: 0 });
   const [watches, setWatches] = useState({
     Datejust: { name: "Datejust", img: "", clicked: false },
-    Oyster: { name: "Oyster", img: "", clicked: false },
+    Submariner: { name: "Submariner", img: "", clicked: false },
+    Explorer: { name: "Explorer", img: "", clicked: false },
+    Milgauss: { name: "Milgauss", img: "", clicked: false },
+    Cellini: { name: "Cellini", img: "", clicked: false },
+    "Oyster Perpetual": { name: "Oyster Perpetual", img: "", clicked: false },
+    "Air-King": { name: "Air-King", img: "", clicked: false },
+    "GMT-Master II": { name: "GMT-Master II", img: "", clicked: false },
+    "Yacht-Master": { name: "Yacht-Master", img: "", clicked: false },
+    "Cosmograph-Daytona": { name: "Cosmograph-Daytona", img: "", clicked: false },
+    "Sea-Dweller": { name: "Sea-Dweller", img: "", clicked: false },
+    "Day-Date": { name: "Day-Date", img: "", clicked: false },
+    "Lady-DateJust": { name: "Lady-DateJust", img: "", clicked: false },
+    "Sky-Dweller": { name: "Sky-Dweller", img: "", clicked: false },
   });
   const [baseState, setBaseState] = useState(watches);
   const firstUpdate = useRef(true);
@@ -23,7 +35,8 @@ function App() {
       setScores((prevScores) => ({
         ...prevScores,
         current: prevScores.current + 1,
-        best: scores.best > scores.current ? scores.best : prevScores.current + 1
+        best:
+          scores.best > scores.current ? scores.best : prevScores.current + 1,
       }));
     }
   }, [...Object.values(watches).map((obj) => obj.clicked)]);
@@ -39,7 +52,7 @@ function App() {
         ...prevScores,
         current: 0,
       }));
-      setWatches(baseState)
+      setWatches(baseState);
     }
   }, [...Object.values(watches).map((obj) => obj.clicked)]);
 
