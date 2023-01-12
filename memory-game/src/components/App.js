@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import "../styles/App.css";
 import Header from "./Header";
 import Main from "./Main";
@@ -11,16 +11,17 @@ function App() {
   });
   const firstUpdate = useRef(true);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
       return;
     }
     setScores((prevScores) => ({
       ...prevScores,
-      current: scores.current++, best: scores.best++
+      current: scores.current++,
+      best: scores.best++,
     }));
-  }, [...Object.values(watches).map(obj => obj.clicked)]);
+  }, [...Object.values(watches).map((obj) => obj.clicked)]);
 
   const handleMove = (e) => {
     let watch = watches[e.target.name];
